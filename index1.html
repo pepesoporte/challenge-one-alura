@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width-divice-width">
+  <title> Encriptador de Texto </title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="titulo"> Encriptador de Texto </h1>
+
+  <main class="main">
+    <section class="form box">
+      <form id="formulario">
+        <label for="input-texto">Solo se permiten (minúsculas) IMPORTANTE:  no se permite caracteres especiales(acentos,punto y coma)</label>
+        <textarea class="text-input" name="input-texto" id="input-texto" placeholder="Ingrese el texto a encriptar" rows="5" cols="50"></textarea>
+        <div class="button-container">
+          <input class="btn" type="submit" value="Encriptar" id="btn-encriptar">            
+          <input class="btn" type="submit" value="Desencriptar" id="btn-desencriptar">
+
+        </div>
+      </form>
+    </section>
+  
+    <section class="msg box">
+      <label for="mensaje-texto">Mensaje encriptado:</h2></label>
+      <textarea class="text-input" name="mensaje-texto" id="mensaje-texto"rows="5" cols="50"> </textarea>   
+      <div class="button-container">
+        <input class="btn" type="submit" value="Copiar Texto" id="btncopy">        
+      <input class="btn" type="submit" value="Limpiar Textos" id="btnlimpiar">  
+      </div>  
+      
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&#128540; &#128540; espero les guste, no se pudo realizar el encriptado de los caracteres especiales por falta de conocimientos en el tema  &#128540; &#128540;  </p>
+    
+  </footer>
+
+  <!-- scrip para encriptar y desencriptar  -->
+
+  <script>
+
+    const inputTexto = document.getElementById('input-texto');
+    const btnEncriptar = document.getElementById('btn-encriptar');
+    const btnDesencriptar = document.getElementById('btn-desencriptar');
+    const inputResultado = document.getElementById('mensaje-texto');
+    const btnlimpiar = document.getElementById('btnlimpiar')
+    const btnCopiar = document.getElementById('btncopy');
+    const soloLetras ='^[a-z !ñ]+$';
+
+    document.addEventListener('DOMContentLoaded', () => {
+    btnEncriptar.addEventListener('click', encriptarTexto);
+    btnDesencriptar.addEventListener('click', desencriptarTexto);
+    btnlimpiar.addEventListener('click', limpiar);
+    btnCopiar.addEventListener('click', copiarTexto);
+});
+    function encriptarTexto(e) {
+      e.preventDefault();
+      inputResultado.value = '';
+      let texto = inputTexto.value;
+      
+      if(texto.match(soloLetras)!=null){
+        let palabras = texto.split(' ');
+        let nuevasPalabras = [];
+        
+        for (let palabra of palabras) {
+          palabra =  palabra.replace('e','enter');
+          palabra =  palabra.replace('o','ober');
+          palabra =  palabra.replace('i','imes');
+          palabra =  palabra.replace('a','ai');
+          palabra =  palabra.replace('u','ufat');       
+          nuevasPalabras.push(palabra);    
+        }    
+        const resultado = nuevasPalabras.join(' ');        
+        inputResultado.value = resultado;
+      } else {
+        mostrarError('Solo se permiten letras minúsculas, sin acentos');
+        return;
+      }  
+    }
+    
+    function desencriptarTexto(e) {
+      e.preventDefault();  
+      inputResultado.value = '';
+      let texto = inputTexto.value;
+    
+      if(texto.match(soloLetras)!=null){
+        let palabras = texto.split(" ");
+        let nuevasPalabras = [];    
+    
+        for (let palabra of palabras) {
+          palabra = palabra.replaceAll('enter','e');
+          palabra = palabra.replaceAll('ober','o');
+          palabra = palabra.replaceAll('imes','i');
+          palabra = palabra.replaceAll('ai','a');
+          palabra = palabra.replaceAll('ufat','u'); 
+          nuevasPalabras.push(palabra);    
+        }    
+        const resultado = nuevasPalabras.join(' ');        
+        inputResultado.value = resultado;
+      } else {
+        mostrarError('Solo se permiten letras minúsculas, sin acentos');
+        return;
+      }  
+    }
+
+
+    function limpiar(){
+      inputTexto.value = '';
+      inputResultado.value = '';
+
+    }
+
+    function mostrarError(mensaje) {
+      const existeError = document.querySelector('.error');
+      
+      if(!existeError) {
+          const formulario = document.getElementById('formulario');
+          const divMensaje = document.createElement('div');
+          divMensaje.classList.add('error');
+      
+          divMensaje.textContent = mensaje;            
+          formulario.appendChild(divMensaje);
+          
+          setTimeout(()=> {
+              divMensaje.remove();
+          }, 2000);
+      }
+    }
+
+
+    function copiarTexto(e) {
+        e.preventDefault(); 
+        const mensaje = inputResultado.value;    
+        navigator.clipboard.writeText(mensaje);
+        inputResultado.value = '';
+    }
+  
+
+
+  </script>
+
+</body>
+
+
+</html>

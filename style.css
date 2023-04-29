@@ -1,0 +1,124 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: linear-gradient(to right, red, #f5f0ef, red); 
+  
+}
+
+.main {
+  max-width: 45rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.titulo {
+  font-size: 4rem;
+  padding: 2rem;
+  text-align: center;
+  margin: auto;
+  color: red;
+  font-weight: normal;
+}
+
+.titulo span {
+  font-weight: bold; 
+}
+
+.box {
+  padding: 1rem;
+  margin: 0 1rem 0 1rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 1rem;
+  height: auto;
+  
+}
+
+label {
+  color: black;
+  background: linear-gradient(to right, red, #f5f0ef, red); 
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container:last-child {
+  margin-right: 0;
+}
+
+.btn {
+  border: 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  background-color:red;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;  
+  cursor: pointer;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.btn:hover {
+  background-color: red;
+  
+}
+
+.text-input {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-family: sans-serif;
+}
+
+.error {
+  background-color: #b7322c;    
+  padding: 1rem;    
+  font-size: 1.3rem;    
+  margin: 1rem auto 0;
+  color: white;   
+  text-align: center; 
+  text-transform: uppercase;
+  font-weight: bold;    
+  border-radius: 0.5rem;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #FFFFFF;  
+}
+
